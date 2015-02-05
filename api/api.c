@@ -9,20 +9,22 @@
 
 #include "api.h"
 
-int arith (int a, int b)
+int c_arith (int a, int b)
 {
   return (a+b);
 }
 
-void print (char * a)
+int c_print (char * a)
 {
-  printf("%s\n", a);
+  printf("print %s\n", a);
+  fflush(stdout);
 }
 
-void function_list (FL ** a)
+int c_function_list (struct FUNCTION_LIST ** a)
 {
-  if (!*a) abort ();
-  (*a)->c_arith = arith;
-  (*a)->c_print = print;
-  (*a)->c_function_list = function_list;
+  if (!a) abort ();
+  *a = malloc(sizeof(struct FUNCTION_LIST));
+  (*a)->c_arith = &c_arith;
+  (*a)->c_print = &c_print;
+  (*a)->c_function_list = &c_function_list;
 };

@@ -4,8 +4,8 @@ typedef struct FUNCTION_LIST FL;
 
 
 typedef int (*f_arith) (int,int);
-typedef void (*f_print) (char*);
-typedef void (*f_function_list) (FL **);
+typedef int (*f_print) (char*);
+typedef int (*f_function_list) (FL **);
 
 struct FUNCTION_LIST {
   f_arith c_arith;
@@ -13,6 +13,6 @@ struct FUNCTION_LIST {
   f_function_list c_function_list;
 };
 
-int arith (int,int);
-void print (char*);
-void function_list (FL**);
+int c_arith (int a,int b);
+int c_print (char* a);
+int c_function_list (struct FUNCTION_LIST ** f);

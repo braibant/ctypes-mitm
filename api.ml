@@ -17,7 +17,7 @@ struct
   module FunctionList =
   struct
 
-    let (-:) ty label = field function_list label (Foreign.funptr ~runtime_lock:true ty)
+    let (-:) ty label = field function_list label (Foreign.funptr ~register_thread:true ~runtime_lock:true ty)
     let c_arith = T.c_arith -: "c_arith"
     let c_print = T.c_print -: "c_print"
     let c_function_list = T.c_function_list -: "c_function_list"

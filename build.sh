@@ -8,7 +8,7 @@ gcc -g -shared -o libapi_c.so api.o
 ocamlfind opt -g -c  -package ctypes.stubs,ctypes.foreign api.ml api_rev.ml api_rev_generator.ml
 
 # link and run the code generator
-ocamlfind opt -linkpkg -package ctypes.stubs,ctypes.foreign api.cmx api_rev.cmx api_rev_generator.cmx -o gen
+ocamlfind opt -thread -linkpkg -package ctypes.stubs,ctypes.foreign api.cmx api_rev.cmx api_rev_generator.cmx -o gen
 ./gen
 
 # compile the generated code
